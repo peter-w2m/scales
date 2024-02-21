@@ -1,0 +1,44 @@
+.draggable {
+    cursor: grab;
+    user-select: none; /* Prevent text selection */
+    padding: 5px;
+    margin: 5px;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.dropZone {
+    border: 2px dashed #ccc; /* Visual cue for drop zones */
+    min-height: 50px; /* Ensure visibility */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.dropZone.over {
+    background-color: #f0f0f0; /* Highlight when an element is dragged over */
+}
+
+
+#scaleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Adjust as needed */
+}
+
+#scale {
+    /* Scale design */
+    width: 300px; /* Adjust as needed */
+    transform: rotate(0deg); /* Initial state */
+    transition: transform 0.5s ease-in-out; /* Smooth transition for tipping */
+}
+
+#leftPan, #rightPan {
+    /* Pan designs */
+    width: 50%; /* Adjust based on your design */
+    height: 50px; /* Adjust as needed */
+    float: left; /* For left pan */
+    float: right; /* For right pan */
+}
