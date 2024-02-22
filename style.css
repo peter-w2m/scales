@@ -1,44 +1,55 @@
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Adjust this to change the layout */
+  gap: 20px; /* Space between grid items */
+  padding: 20px;
+}
+
+#elementsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Creates a responsive grid for elements */
+  gap: 10px; /* Space between elements */
+  justify-items: center;
+}
+
 .draggable {
-    cursor: grab;
-    user-select: none; /* Prevent text selection */
-    padding: 5px;
-    margin: 5px;
-    background-color: lightgray;
-    border-radius: 5px;
+  cursor: grab;
+  user-select: none; /* Prevent text selection */
+  padding: 5px;
+  margin: 5px;
+  background-color: lightgray;
+  border-radius: 5px;
 }
 
 .dropZone {
-    border: 2px dashed #ccc; /* Visual cue for drop zones */
-    min-height: 50px; /* Ensure visibility */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.2s ease-in-out;
+  border: 2px dashed #ccc; /* Visual cue for drop zones */
+  min-height: 50px; /* Ensure visibility */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .dropZone.over {
-    background-color: #f0f0f0; /* Highlight when an element is dragged over */
+  background-color: #f0f0f0; /* Highlight when an element is dragged over */
 }
 
-
 #scaleContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px; /* Adjust as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust as needed */
 }
 
 #scale {
-    /* Scale design */
-    width: 300px; /* Adjust as needed */
-    transform: rotate(0deg); /* Initial state */
-    transition: transform 0.5s ease-in-out; /* Smooth transition for tipping */
+  width: 300px; /* Adjust as needed */
+  transform: rotate(0deg); /* Initial state */
+  transition: transform 0.5s ease-in-out; /* Smooth transition for tipping */
 }
 
 #leftPan, #rightPan {
-    /* Pan designs */
-    width: 50%; /* Adjust based on your design */
-    height: 50px; /* Adjust as needed */
-    float: left; /* For left pan */
-    float: right; /* For right pan */
+  width: 50%; /* Adjust based on your design */
+  height: 50px; /* Adjust as needed */
+  float: left; /* For left pan */
+  float: right; /* For right pan */
 }
