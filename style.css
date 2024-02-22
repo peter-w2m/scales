@@ -1,15 +1,16 @@
 body {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Adjust this to change the layout */
-  gap: 20px; /* Space between grid items */
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center items horizontally */
+  gap: 20px; /* Space between items */
   padding: 20px;
-} 
+}
 
 #elementsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Creates a responsive grid for elements */
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap as needed */
+  justify-content: center; /* Center items horizontally */
   gap: 10px; /* Space between elements */
-  justify-items: center;
 }
 
 .draggable {
@@ -28,6 +29,7 @@ body {
   justify-content: center;
   align-items: center;
   transition: background-color 0.2s ease-in-out;
+  width: 100%; /* Ensure drop zones fill the container width */
 }
 
 .dropZone.over {
@@ -43,13 +45,14 @@ body {
 
 #scale {
   width: 300px; /* Adjust as needed */
-  transform: rotate(0deg); /* Initial state */
-  transition: transform 0.5s ease-in-out; /* Smooth transition for tipping */
+  display: flex; /* Use flexbox for the scale itself */
+  justify-content: space-between; /* Space out left and right pans */
 }
 
 #leftPan, #rightPan {
-  width: 50%; /* Adjust based on your design */
+  width: 45%; /* Adjust based on your design */
   height: 50px; /* Adjust as needed */
-  float: left; /* For left pan */
-  float: right; /* For right pan */
+  display: flex; /* Enable flexbox for pan alignment */
+  justify-content: center; /* Center content within each pan */
+  align-items: center; /* Align content vertically */
 }
