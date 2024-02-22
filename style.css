@@ -3,7 +3,7 @@ body {
   grid-template-columns: 1fr 1fr; /* Adjust this to change the layout */
   gap: 20px; /* Space between grid items */
   padding: 20px;
-}
+} 
 
 #elementsContainer {
   display: grid;
