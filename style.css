@@ -41,6 +41,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 200px; /* Adjust as needed */
+  width: 100%; /* Ensure container takes full width if necessary */
 }
 
 #scale {
@@ -50,9 +51,10 @@ body {
 }
 
 #leftPan, #rightPan {
-  width: 45%; /* Adjust based on your design */
+  width: 45%; /* Adjust to ensure they fit side by side within #scale */
   height: 50px; /* Adjust as needed */
   display: flex; /* Enable flexbox for pan alignment */
   justify-content: center; /* Center content within each pan */
   align-items: center; /* Align content vertically */
 }
+
