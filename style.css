@@ -14,6 +14,7 @@ body {
   align-items: center; /* Center vertically */
   height: 100vh; /* Use the full height of the viewport */
   margin: 0; /* Remove default margin */
+  flex-direction: column;
 }
 
 #elementsContainer {
@@ -33,8 +34,8 @@ body {
 }
 
 .dropZone {
-  border: 2px dashed #ccc; /* Visual cue for drop zones */
-  min-height: 50px; /* Ensure visibility */
+  border: 2px #ccc; /* Visual cue for drop zones */
+  min-height: 100px; /* Ensure visibility */
   display: flex;
   justify-content: center;
   align-items: center;
