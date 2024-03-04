@@ -45,7 +45,7 @@ body {
 }
 
 #scale {
-  width: 300px; /* Adjust as needed */
+  width: 80%; /* Adjust as needed */
   display: flex; /* Use flexbox for the scale itself */
   justify-content: space-between; /* Space out left and right pans */
 }
