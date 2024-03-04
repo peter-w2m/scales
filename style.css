@@ -34,7 +34,7 @@ body {
 }
 
 .dropZone {
-  border: 2px #ccc; /* Visual cue for drop zones */
+  border: 2px solid #ccc; /* Visual cue for drop zones */
   min-height: 100px; /* Ensure visibility */
   display: flex;
   justify-content: center;
