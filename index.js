@@ -4,7 +4,7 @@ let weightRight = 0;
 
 // Function to update the scale's angle based on weights
 function updateScale(weightLeft, weightRight) {
-    var angle = (weightRight - weightLeft) * 10; // Simplified calculation for angle
+    var angle = (weightRight - weightLeft) * 5; // Simplified calculation for angle
     document.getElementById('scale').style.transform = `rotate(${angle}deg)`;
 }
 
