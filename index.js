@@ -8,9 +8,10 @@ function updateScale(weightLeft, weightRight) {
     document.getElementById('scale').style.transform = `rotate(${angle}deg)`;
 }
 
-// Event handlers for draggable elements
+// Enhanced drag and drop functionality
 document.querySelectorAll('.draggable').forEach(item => {
     item.addEventListener('dragstart', handleDragStart, false);
+    item.addEventListener('click', resetElementPosition, false); // Add click event listener
 });
 
 // Event handlers for drop zones
@@ -21,27 +22,22 @@ document.querySelectorAll('.dropZone').forEach(zone => {
     zone.addEventListener('drop', handleDrop, false);
 });
 
-// Handle the start of dragging
 function handleDragStart(e) {
     e.dataTransfer.setData('text/plain', e.target.id);
 }
 
-// Allow the dragged item to be dropped by preventing the default handling
 function handleDragOver(e) {
-    e.preventDefault();
+    e.preventDefault(); // Necessary to allow dropping
 }
 
-// Highlight the drop zone when an item is dragged over it
 function handleDragEnter(e) {
     e.target.classList.add('over');
 }
 
-// Remove the highlight when the dragged item leaves the drop zone
 function handleDragLeave(e) {
     e.target.classList.remove('over');
 }
 
-// Handle the drop of an item
 function handleDrop(e) {
     e.preventDefault();
     const id = e.dataTransfer.getData('text/plain');
@@ -49,29 +45,36 @@ function handleDrop(e) {
     e.target.classList.remove('over');
 
     // Move the draggable element to the drop zone
-    if (!e.target.classList.contains('dropZone')) {
-        // Ensure that items are only dropped into drop zones, not nested inside other items
-        return;
-    }
     e.target.appendChild(draggableElement);
 
-    // Adjust weights based on which pan the item was dropped
-    if (e.target.id === 'leftPan') {
-        weightLeft += 1; // Adjust weight increment based on your logic or item-specific weights
-    } else if (e.target.id === 'rightPan') {
-        weightRight += 1; // Adjust weight increment accordingly
+    // Update weights based on the drop zone
+    updateWeight(draggableElement, 'add', e.target.id);
+}
+
+function updateWeight(element, action, panId) {
+    // Assume each item has a weight of 1 for simplicity
+    const weight = 1;
+    
+    if (action === 'add') {
+        if (panId === 'leftPan') {
+            weightLeft += weight;
+        } else if (panId === 'rightPan') {
+            weightRight += weight;
+        }
+    } else if (action === 'remove') {
+        if (element.parentNode.id === 'leftPan') {
+            weightLeft -= weight;
+        } else if (element.parentNode.id === 'rightPan') {
+            weightRight -= weight;
+        }
     }
+    
     updateScale(weightLeft, weightRight);
 }
 
-// Function to manually apply weights through input fields (if part of your design)
-function applyWeights() {
-    var weightLeftInput = parseInt(document.getElementById('weightLeft').value) || 0;
-    var weightRightInput = parseInt(document.getElementById('weightRight').value) || 0;
-    
-    // Update global weights based on input
-    weightLeft += weightLeftInput;
-    weightRight += weightRightInput;
+function resetElementPosition(e) {
+    const originalContainer = document.getElementById('elementsContainer');
+    originalContainer.appendChild(e.target); // Move the element back to its original container
 
-    updateScale(weightLeft, weightRight);
+    updateWeight(e.target, 'remove'); // Update the weight since the element is removed from a pan
 }
