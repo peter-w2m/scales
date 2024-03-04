@@ -74,7 +74,15 @@ function updateWeight(element, action, panId) {
 
 function resetElementPosition(e) {
     const originalContainer = document.getElementById('elementsContainer');
+    // Determine the parent before moving the element
+    const wasInLeftPan = e.target.parentNode.id === 'leftPan';
+    const wasInRightPan = e.target.parentNode.id === 'rightPan';
+
     originalContainer.appendChild(e.target); // Move the element back to its original container
 
-    updateWeight(e.target, 'remove'); // Update the weight since the element is removed from a pan
+    // Only update weight if the element was in one of the pans
+    if (wasInLeftPan || wasInRightPan) {
+        updateWeight(e.target, 'remove', wasInLeftPan ? 'leftPan' : 'rightPan');
+    }
 }
+
