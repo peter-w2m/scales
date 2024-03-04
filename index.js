@@ -4,7 +4,7 @@ let weightRight = 0;
 
 // Function to update the scale's angle based on weights
 function updateScale(weightLeft, weightRight) {
-    var angle = (weightRight - weightLeft) * 5; // Simplified calculation for angle
+    var angle = (weightRight - weightLeft) * 3; // Simplified calculation for angle
     document.getElementById('scale').style.transform = `rotate(${angle}deg)`;
 }
 
@@ -80,9 +80,11 @@ function resetElementPosition(e) {
 
     originalContainer.appendChild(e.target); // Move the element back to its original container
 
+    updateWeight(draggableElement, 'add', e.target.id);
+    
     // Only update weight if the element was in one of the pans
-    if (wasInLeftPan || wasInRightPan) {
-        updateWeight(e.target, 'remove', wasInLeftPan ? 'leftPan' : 'rightPan');
-    }
+   // if (wasInLeftPan || wasInRightPan) {
+    //    updateWeight(e.target, 'remove', wasInLeftPan ? 'leftPan' : 'rightPan');
+    // }
 }
 
