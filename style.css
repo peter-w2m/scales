@@ -67,5 +67,6 @@ body {
   display: flex; /* Enable flexbox for pan alignment */
   justify-content: center; /* Center content within each pan */
   align-items: center; /* Align content vertically */
+  flex-wrap: wrap;
 }
 
