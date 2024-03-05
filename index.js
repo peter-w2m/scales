@@ -79,12 +79,12 @@ function resetElementPosition(e) {
     const wasInRightPan = e.target.parentNode.id === 'rightPan';
 
     // Check if the element was in one of the pans before resetting its position
-    if (wasInLeftPan || wasInRightPan) {
+    // if (wasInLeftPan || wasInRightPan) {
         // Move the element back to its original container
         originalContainer.appendChild(e.target);
 
         // Update the weight accordingly
         updateWeight(e.target, 'remove', wasInLeftPan ? 'leftPan' : 'rightPan');
-    }
+   // }
 }
 
