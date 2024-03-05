@@ -80,11 +80,10 @@ function resetElementPosition(e) {
 
     originalContainer.appendChild(e.target); // Move the element back to its original container
 
-    updateWeight(draggableElement, 'add', e.target.id);
-    
-    // Only update weight if the element was in one of the pans
-   // if (wasInLeftPan || wasInRightPan) {
-    //    updateWeight(e.target, 'remove', wasInLeftPan ? 'leftPan' : 'rightPan');
-    // }
+    // Correctly call updateWeight to remove the weight
+    if (wasInLeftPan || wasInRightPan) {
+        updateWeight(e.target, 'remove', wasInLeftPan ? 'leftPan' : 'rightPan');
+    }
 }
+
 
