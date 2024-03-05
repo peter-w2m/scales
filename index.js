@@ -52,8 +52,7 @@ function handleDrop(e) {
 }
 
 function updateWeight(element, action, panId) {
-    // Assume each item has a weight of 1 for simplicity
-    const weight = 1;
+    const weight = 1; // Assume each item has a weight of 1 for simplicity
     
     if (action === 'add') {
         if (panId === 'leftPan') {
@@ -74,16 +73,11 @@ function updateWeight(element, action, panId) {
 
 function resetElementPosition(e) {
     const originalContainer = document.getElementById('elementsContainer');
-    // Determine the parent before moving the element
     const wasInLeftPan = e.target.parentNode.id === 'leftPan';
     const wasInRightPan = e.target.parentNode.id === 'rightPan';
 
-    originalContainer.appendChild(e.target); // Move the element back to its original container
-
-    // Correctly call updateWeight to remove the weight
     if (wasInLeftPan || wasInRightPan) {
+        originalContainer.appendChild(e.target); // Move the element back to its original container
         updateWeight(e.target, 'remove', wasInLeftPan ? 'leftPan' : 'rightPan');
     }
 }
-
-
