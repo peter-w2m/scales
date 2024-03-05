@@ -61,18 +61,20 @@ function updateWeight(element, action, panId) {
             weightRight += weight;
         }
     } else if (action === 'remove') {
-        if (element.parentNode.id === 'leftPan') {
+        // Adjust this logic to ensure it's accurate based on where the element was before being moved
+        if (panId === 'leftPan') {
             weightLeft -= weight;
-        } else if (element.parentNode.id === 'rightPan') {
+        } else if (panId === 'rightPan') {
             weightRight -= weight;
         }
     }
     
+    // Ensure updateScale is called after adjusting weights
     updateScale(weightLeft, weightRight);
 }
 
 
-
+/*
 function resetElementPosition(e) {
     const originalContainer = document.getElementById('elementsContainer');
     const wasInLeftPan = e.target.parentNode.id === 'leftPan';
@@ -87,4 +89,19 @@ function resetElementPosition(e) {
         updateWeight(e.target, 'remove', wasInLeftPan ? 'leftPan' : 'rightPan');
    // }
 }
+*///
+
+function resetElementPosition(e) {
+    const originalContainer = document.getElementById('elementsContainer');
+    // You don't need to check if it was in a pan since the action is 'remove'
+    // and updateWeight checks the panId to adjust weights correctly
+    const panId = e.target.parentNode.id; // Capture the panId before moving the element
+
+    // Move the element back to its original container
+    originalContainer.appendChild(e.target);
+
+    // Update the weight accordingly, using the captured panId
+    updateWeight(e.target, 'remove', panId);
+}
+
 
